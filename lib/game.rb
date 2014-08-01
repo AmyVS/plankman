@@ -1,24 +1,19 @@
 class Game
+  attr_reader :word, :correct_word, :starting_penalty, :max_penalty, :blanks
+
   def initialize
     @word = ""
     @correct_word = []
     @starting_penalty = 0
     @max_penalty = 6
+    @blanks = []
   end
 
-  def word(word)
+  def set_word(word)
     @word = word
-  end
-
-  def correct_word
-    @correct_word
-  end
-
-  def starting_penalty
-    @starting_penalty
-  end
-
-  def max_penalty
-    @max_penalty
+    @correct_word = @word.split("")
+    @correct_word.each do
+      @blanks << "_"
+    end
   end
 end

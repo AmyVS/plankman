@@ -16,4 +16,18 @@ class Game
       @blanks << "_"
     end
   end
+
+  def letter_matcher
+    valid = nil
+    @correct_word.each do |character|
+      if character == @letter
+        valid = true
+      end
+    end
+    valid
+  end
+
+  def guess_input(letter)
+    @letter = letter
+  end
 end

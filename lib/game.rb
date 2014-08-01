@@ -31,8 +31,10 @@ class Game
 
   def reveal
     @correct_word.each do |character|
-      if character == @letter
-        @blanks[@correct_word.index(character)] = @letter
+      if @blanks[@correct_word.index(character)] == "_"
+        if character == @letter
+          @blanks[@correct_word.index(character)] = @letter
+        end
       end
     end
     @blanks
@@ -43,6 +45,7 @@ class Game
       result = "You win!"
     end
     result
+
   end
 
   def lose_game
@@ -51,6 +54,7 @@ class Game
       result  = "You lose!"
     end
     result
+
   end
 
 end

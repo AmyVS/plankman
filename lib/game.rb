@@ -1,5 +1,5 @@
 class Game
-  attr_reader :word, :correct_word, :starting_penalty, :max_penalty, :blanks
+  attr_reader :word, :correct_word, :max_penalty, :blanks, :starting_penalty
 
   def initialize
     @word = ""
@@ -18,16 +18,17 @@ class Game
   end
 
   def letter_matcher
-    valid = nil
-    @correct_word.each do |character|
-      if character == @letter
-        valid = true
-      end
+    @starting_penalty
+    if !@correct_word.include?(@letter)
+      @starting_penalty += 1
     end
-    valid
   end
 
   def guess_input(letter)
     @letter = letter
   end
+
+  # def starting_penalty
+  #   @starting_penalty
+  # end
 end

@@ -38,4 +38,19 @@ class Game
     @blanks
   end
 
+  def win_game
+    if @blanks == @correct_word
+      result = "You win!"
+    end
+    result
+  end
+
+  def lose_game
+    @starting_penalty
+    if @starting_penalty == @max_penalty
+      result  = "You lose!"
+    end
+    result
+  end
+
 end

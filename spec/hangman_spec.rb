@@ -52,4 +52,31 @@ describe Game do
     test_game.letter_matcher
     expect(test_game.reveal).to eq ["_", "t", "_", "_", "_"]
   end
+
+  it 'will tell the player if they guessed all the letters correctly' do
+    test_game = Game.new
+    test_game.set_word("s")
+    test_game.guess_input("s")
+    test_game.letter_matcher
+    expect(test_game.win_game).to eq "You win!"
+  end
+
+  it 'will tell a player that they lost if the starting penalty equals the max penalty' do
+    test_game = Game.new
+    test_game.set_word("s")
+    test_game.guess_input("1")
+    test_game.letter_matcher
+    test_game.guess_input("2")
+    test_game.letter_matcher
+    test_game.guess_input("3")
+    test_game.letter_matcher
+    test_game.guess_input("4")
+    test_game.letter_matcher
+    test_game.guess_input("5")
+    test_game.letter_matcher
+    test_game.guess_input("6")
+    test_game.letter_matcher
+    expect(test_game.lose_game).to eq "You lose!"
+  end
+
 end

@@ -27,28 +27,29 @@ describe Game do
   end
 
   it 'shows the player blanks according to how many letters are in the word' do
-    test_game = Game.new()
+    test_game = Game.new
     test_game.set_word('storm')
     expect(test_game.blanks).to eq ["_", "_", "_", "_", "_"]
   end
 
   it 'takes a guessed letter and stores it for testing against the correct word' do
-    test_game = Game.new()
+    test_game = Game.new
     expect(test_game.guess_input("s")).to eq "s"
   end
 
   it 'adds 1 to the starting penalty if the letter guessed is false' do
-    test_game = Game.new()
+    test_game = Game.new
     test_game.set_word("storm")
     test_game.guess_input('x')
     test_game.letter_matcher
     expect(test_game.starting_penalty).to eq 1
   end
 
-  # it 'reveals a letter in the blanks if guessed correctly' do
-  #   test_game = Game.new()
-  #   test_game.set_word("storm")
-  #   test_game.guess_input('t')
-  #   expect(test_game.reveal).to eq ["_", "t", "_", "_", "_"]
-  # end
+  it 'reveals a letter in the blanks if guessed correctly' do
+    test_game = Game.new
+    test_game.set_word("storm")
+    test_game.guess_input('t')
+    test_game.letter_matcher
+    expect(test_game.reveal).to eq ["_", "t", "_", "_", "_"]
+  end
 end

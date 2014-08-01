@@ -17,23 +17,25 @@ class Game
     end
   end
 
+  def guess_input(letter)
+    @letter = letter
+  end
+
   def letter_matcher
     if !@correct_word.include?(@letter)
       @starting_penalty += 1
     else
-      reveal(@letter)
+      reveal
     end
   end
 
-  def reveal(letter)
+  def reveal
     @correct_word.each do |character|
-      if character == letter
-        @blanks[correct_word[character]] = letter
+      if character == @letter
+        @blanks[@correct_word.index(character)] = @letter
       end
     end
+    @blanks
   end
 
-  def guess_input(letter)
-    @letter = letter
-  end
 end

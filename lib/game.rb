@@ -18,17 +18,22 @@ class Game
   end
 
   def letter_matcher
-    @starting_penalty
     if !@correct_word.include?(@letter)
       @starting_penalty += 1
+    else
+      reveal(@letter)
+    end
+  end
+
+  def reveal(letter)
+    @correct_word.each do |character|
+      if character == letter
+        @blanks[correct_word[character]] = letter
+      end
     end
   end
 
   def guess_input(letter)
     @letter = letter
   end
-
-  # def starting_penalty
-  #   @starting_penalty
-  # end
 end
